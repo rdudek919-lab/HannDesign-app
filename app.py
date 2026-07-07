@@ -113,6 +113,36 @@ div[data-testid="InputInstructions"] { display: none !important; }
 .cat-table td { padding: 14px 20px; border-bottom: 1px solid #f1f5f9; font-weight: 600; color: #1e293b; font-size: 15px; }
 .cat-table tr:last-child td { border-bottom: none; }
 .cat-table tr:hover td { background-color: #f8fafc; }
+
+/* =========================================================
+   NOWOŚĆ: LOGIKA DLA TELEFONÓW KOMÓRKOWYCH (RESPANSYWNOŚĆ) 
+   ========================================================= */
+@media (max-width: 768px) {
+    /* 1. Odpinamy menu od góry ekranu, żeby chowało się podczas przewijania */
+    section[data-testid="stMain"] div[data-testid="stElementContainer"]:has(div[data-testid="stRadio"]) {
+        position: relative !important;
+        top: 0 !important;
+        padding: 5px !important;
+        margin-top: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        background-color: transparent !important;
+    }
+    
+    /* 2. Zamiast budować wielki kwadrat z przycisków, robimy jeden poziomy pasek (scrollowalny na boki) */
+    section[data-testid="stMain"] div[data-testid="stRadio"] > div {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        padding-bottom: 10px !important; /* miejsce na pasek przewijania */
+        -webkit-overflow-scrolling: touch; /* płynne przewijanie na iOS */
+    }
+    
+    /* 3. Zabezpieczamy przyciski przed ściśnięciem na pasku */
+    section[data-testid="stMain"] div[data-testid="stRadio"] > div > label {
+        flex: 0 0 auto !important; 
+        padding: 8px 16px !important;
+    }
+}
 </style>
 """, unsafe_allow_html=True)
 
