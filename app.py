@@ -143,6 +143,25 @@ div[data-testid="InputInstructions"] { display: none !important; }
         padding: 8px 16px !important;
     }
 }
+/* --- NAPRAWA TABEL NA TELEFONACH --- */
+@media (max-width: 768px) {
+    /* Wymuszamy przewijanie tabeli zamiast jej łamania */
+    div[data-testid="stDataFrame"], div[data-testid="stTable"] {
+        overflow-x: auto !important;
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    .cat-table {
+        min-width: 500px !important; /* Dzięki temu tabela się nie "złamie" */
+    }
+
+    /* Zapewniamy, że kontenery kolumn nie blokują tabeli */
+    div[data-testid="column"] {
+        width: 100% !important;
+        flex: 1 1 100% !important;
+    }
+}
 </style>
 """, unsafe_allow_html=True)
 
